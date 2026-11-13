@@ -1,0 +1,10 @@
+[build]
+  base = "client"
+  command = "npm run build"
+  publish = "dist"
+
+# Faz as rotas do React (/agenda, /pomodoro…) funcionarem ao recarregar a página
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

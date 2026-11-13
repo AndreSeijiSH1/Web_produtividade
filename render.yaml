@@ -1,0 +1,19 @@
+# Blueprint do Render: cria a API automaticamente a partir do repositório.
+services:
+  - type: web
+    name: organizador-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/saude
+    envVars:
+      - key: DATABASE_URL
+        sync: false          # você cola a connection string do Neon no painel
+      - key: JWT_SECRET
+        generateValue: true  # o Render gera um segredo aleatório
+      - key: FRONT_URL
+        sync: false          # o link do Netlify
+      - key: APP_TZ
+        value: America/Sao_Paulo
